@@ -4,11 +4,12 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
-<div id="container"></div>
+    <div class="text-left">
+        <div>On @Model.tweetDisplay.DisplayDate()</div>
+        <div>@Model.tweetDisplay.eventContent</div>
+       <div id="container"></div>
+
+    </div>
 
 <script>
 window.twttr = (function(d, s, id) {
@@ -31,7 +32,7 @@ window.twttr = (function(d, s, id) {
 <script>
     twttr.ready(function () {
         twttr.widgets.createTweet(
-            '@Model.tweet.IdStr',
+            '@Model.tweetDisplay.twitterStatus.IdStr',
             document.getElementById('container')
         );      
     });

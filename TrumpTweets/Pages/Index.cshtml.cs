@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using TrumpTweets.Model;
 using TweetSharp;
 
 namespace TrumpTweets.Pages
 {
     public class IndexModel : PageModel
     {
-        public TwitterStatus tweet;
+        public TweetDisplay tweetDisplay;
+
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -21,9 +23,8 @@ namespace TrumpTweets.Pages
 
         public void OnGet()
         {
-            Tweet Twitter = new Tweet();
-            tweet = Twitter.GetTweet();
-            Twitter.GetEvent(tweet);
+            MyService Twitter = new MyService();
+            tweetDisplay = Twitter.GetTweet();
         }
     }
 }
