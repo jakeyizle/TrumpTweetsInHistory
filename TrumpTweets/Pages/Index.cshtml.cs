@@ -21,10 +21,11 @@ namespace TrumpTweets.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
+        public async Task<PageResult> OnGetAsync()
+        {            
             MyService Twitter = new MyService();
-            tweetDisplay = Twitter.GetTweet();
+            tweetDisplay = await Twitter.GetTweetAsync();
+            return Page();
         }
     }
 }

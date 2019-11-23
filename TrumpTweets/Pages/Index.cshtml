@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+@if (Model.tweetDisplay != null) { 
     <div class="text-left">
-        <div>On @Model.tweetDisplay.DisplayDate()</div>
+        <div> <h2>On @Model.tweetDisplay.DisplayDate()</h2></div>
         <div>@Model.tweetDisplay.eventContent</div>
        <div id="container"></div>
 
     </div>
-
+    }
 <script>
 window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -34,6 +34,6 @@ window.twttr = (function(d, s, id) {
         twttr.widgets.createTweet(
             '@Model.tweetDisplay.twitterStatus.IdStr',
             document.getElementById('container')
-        );      
+            );           
     });
     </script>
